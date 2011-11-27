@@ -1,0 +1,37 @@
+body {
+	background-color: #f3f4ff;
+}
+
+div.concept {
+	border: solid 2px;
+	border-radius: 25px;
+	text-align: center;
+	font-family: chowfun;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	width: 200px;
+	height: 100px;
+}
+
+div.concept:hover {
+	width: 250px;
+	height: 125px;
+	padding-top: 25px;
+}
+
+div#sociologyDiv:hover {
+	background-color: #c8fdec;
+}
+
+div#sociologyDiv {
+	position: absolute;
+	left: 100px;
+	top: 300px;
+	background-color: #fff1c9;
+	-webkit-transform: rotate(1.5);
+}
+
+@font-face {
+	font-family: chowfun;
+	src: url('../fonts/chowfun.ttf');
+}
