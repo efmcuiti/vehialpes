@@ -1,5 +1,77 @@
 body {
-	background-color: #f3f4ff;
+}
+
+div.appointmentDiv {
+	border: solid 2px;
+	width: 800px;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #c0bdbd;
+}
+
+div.attendLink {
+	text-align: right;
+	font-family: chowfun;
+}
+
+a.attendLink{
+	border: solid 1px #ff6d00;
+	padding: 3px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: #48a1be;
+	background-color: #387896;
+	text-shadow: 5px 5px 5px #000;
+}
+
+a.moreLink{
+	border-right: solid 1px #ff6d00;
+	border-bottom: solid 1px;
+	padding: 2px;
+	text-decoration: none;
+	color: #ff6d00;
+	text-shadow: 5px 5px 5px #000;
+	border-radius: 50px;
+	background-color: #48a1be;
+}
+
+div.appointmentDetailDiv {
+	border-top: solid 2px;
+	border-radius: 10px;
+	padding: 10px;
+	width: 700px;
+	background-color: #c4c4c4;
+}
+
+/* Appoint detail items */
+.appointmentDetailElement {
+	font-family: oldnewspaper;
+	width: 400px;
+}
+
+div.detailElement {
+	width: 100px;
+	overflow: hidden;
+}
+
+.appointmentDetailValue {
+	padding: 5px;
+}
+
+img.appointmentDetailValue {
+	height: 50px;
+}
+
+/* Configuracion del encabezado.*/
+img.header {
+	border: solid 1px;
+	height: 70px;
+}
+div.header {
+	margin-left: 300px;
 }
 
 div.concept {
@@ -34,4 +106,9 @@ div#sociologyDiv {
 @font-face {
 	font-family: chowfun;
 	src: url('../fonts/chowfun.ttf');
+}
+
+@font-face {
+	font-family: oldnewspaper;
+	src: url('../fonts/oldnewspaper.ttf');
 }

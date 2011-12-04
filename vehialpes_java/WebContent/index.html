@@ -1,18 +1,54 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>The E's list :: A research project.</title>
+		<title>Appointments main view.</title>
+		<!--script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script -->
 		<script type="text/javascript" src="./js/jquery.js"></script>
+		<script type="text/javascript" src="./js/jquery-ui.js"></script>
 		<script type="text/javascript" src="./js/main.js"></script>
 		<link rel="stylesheet" href="./css/mainStyle.css" />
+		<script id="appointmentsTemplate" type="text/x-jquery-tmpl">
+			<div class="appointmentDiv" id="apointment${id}">
+				<a href="#" data-id="${id}" class="moreLink">&nbsp;>&nbsp;</a>
+				To be attended on: ${fecha}&nbsp;
+				<div class="attendLink">
+					<a href="#" data-id="${id}" class="attendLink">Atender</a>
+				</div>
+				<div id="appointmentDetail${id}" class="appointmentDetailDiv">
+					<div class="detailElement">
+						<span class="appointmentDetailElement"> Hora: </span> <br />
+						<span class="appointmentDetailValue"> ${fecha} </span> <br />
+					</div>
+					<div class="detailElement">
+						<span class="appointmentDetailElement"> Veh&iacute;culo: </span> <br />
+						<img src="${vehiculo.foto}" class="appointmentDetailValue" />
+					</div>
+				</div>
+			</div>
+		</script>
 	</head>
 	<body>
-		<div class="concept" id="sociologyDiv">
-			<h1>Sociology</h1>
+		<div class="header">
+			<img src="./img/audio0.jpg" class="header" />
 		</div>
-		<div id="queryDiv">
-			<input type="button" value="Get customer" id="getButton" />
-			<span id="result"></span>
+		<div class="appointmentDiv" id="appointment1">
+			<a href="#" data-id="1" class="moreLink">&nbsp;>&nbsp;</a>
+			To be attended on: December 7h, 2011&nbsp;
+			<div class="attendLink">
+				<a href="#" data-id="1" class="attendLink">Atender</a>
+			</div>
+			<div class="appointmentDetailDiv">
+				<div class="detailElement">
+					<span class="appointmentDetailElement"> Hora: </span> <br />
+					<span class="appointmentDetailValue"> 17:43.25</span> <br />
+				</div>
+				<div class="detailElement">
+					<span class="appointmentDetailElement"> Veh&iacute;culo: </span> <br />
+					<img src="./img/audio0.jpg" class="appointmentDetailValue" />
+				</div>
+			</div>
 		</div>
+		<!-- Here goes the real development -->
+		<div id="bodyContent"></div>
 	</body>
 </html>
