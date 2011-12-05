@@ -1,43 +1,57 @@
 $(document).ready(function() {
+	// Store the template with a key-name and use it later
+	$.template('appo-tmpl', $('#appointmentsTemplate'));
+	
+	// All links that toggles the appointment's detail.
+	var mores = $('.moreLink');
+	// All of the appointment's detail.
+	var details = $('.appointmentDetailDiv');
+	// All links that re-directs to the attend window.
+	var attends = $('.attendLink');
+
 	// What workshop is logged in.
 	sessionStorage.idWorkshop=1;
+	sessionStorage.idAppointment=-1;
+	sessionStorage.idVehicle=-1;
 
-	// Hiding appointments details.
-	$('.appointmentDetailDiv').hide();
-	
-	$('.moreLink').click(function() {
-		$('.appointmentDetailDiv').toggle('slow');
-		alert(sessionStorage.idWorkshop);
-	});
-	
 	// Getting all the appointments for the actual workshop.
 	$.getJSON("http://localhost:8080/vehialpes_java/vehialpes/appointments/" + sessionStorage.idWorkshop, function(data) {
-		$.each(data, function(i, d) {
-			alert(d.fecha);
+		$.tmpl('appo-tmpl', data).appendTo('#bodyContent');
+		mores = $('.moreLink');
+		details = $('.appointmentDetailDiv');
+		$.each(details, function(i, d) {
+			$(d).hide();
 		});
+		
+		// Building the dates to show.
+		var dates = $('.dateDetailValue');
+		$.each(dates, function(i, dt) {
+			var date = $(dt).text();
+			$(dt).text('');
+			var nDate = new Date(date);
+			$(dt).datepicker({dateFormat: 'isoDateTime', defaultDate: nDate, disabled: true});
+		});
+		
+		// Loading all the links to be attended.
+		attends = $('.attendLink');
+	});
+
+	// Every time a "more" link is clicked, its corresponging detail div shall be toggled.
+	mores.live('click', function(event) {
+		var id = $(this).data('id');
+		$('#appointmentDetail' + id).toggle('slow');
 	});
 	
-	// Invoking POST method of a REST service.
-	$('.attendLink').click(function() {
-		$.ajax({
-        	type: "POST",
-        	url: "http://vehialpes.lubrigras.net/api/v1/ciudad/",
-        	dataType: "jsonp",
-        	crossDomain: true,
-        	data: '{"nombre":"Zipaquira"}',
-        	beforeSend: function(xhr) {
-				xhr.setRequestHeader("Authentication", "Basic " + encodeURIComponent("daniel" + ":" + "ejes") )
-			},
-			sucess: function(result) {
-				alert('done');
-			}
-    	});
-	});
-	
-	$("#getButton").click(function() {
-		$.getJSON("http://localhost:8080/Resteasy_basix/customers/helloCustomer", function(data) {
-			$("#result").append(data.name);
-			$("#result").append("," + data.email);
-		});
+	// Every time a "attend" link is clicked, its corresponding appointment shall be attached to work with.
+	attends.live('click', function(event) {
+		var idAppointment = $(this).data('id');
+		var idVehicle = $(this).data('vehicle');
+		if (idAppointment != null) {
+			sessionStorage.idAppointment = idAppointment;
+		}
+		if (idVehicle != null) {
+			sessionStorage.idVehicle = idVehicle;
+		}
+		window.location.replace('./diagnostic.html');
 	});
 });

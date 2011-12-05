@@ -2,22 +2,23 @@
 <html>
 	<head>
 		<title>Appointments main view.</title>
-		<!--script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script -->
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="./js/jquery.js"></script>
 		<script type="text/javascript" src="./js/jquery-ui.js"></script>
+		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 		<script type="text/javascript" src="./js/main.js"></script>
 		<link rel="stylesheet" href="./css/mainStyle.css" />
 		<script id="appointmentsTemplate" type="text/x-jquery-tmpl">
-			<div class="appointmentDiv" id="apointment${id}">
+			<div class="appointmentDiv" id="appointment${id}">
 				<a href="#" data-id="${id}" class="moreLink">&nbsp;>&nbsp;</a>
-				To be attended on: ${fecha}&nbsp;
+				<span class="appointmentDetailElement">Cita a ser atendida en:</span> ${fecha}&nbsp;
 				<div class="attendLink">
-					<a href="#" data-id="${id}" class="attendLink">Atender</a>
+					<a href="#" data-id="${id}" data-vehicle="${vehiculo.id}" class="attendLink">Atender</a>
 				</div>
 				<div id="appointmentDetail${id}" class="appointmentDetailDiv">
 					<div class="detailElement">
 						<span class="appointmentDetailElement"> Hora: </span> <br />
-						<span class="appointmentDetailValue"> ${fecha} </span> <br />
+						<div data-id="${id}" class="dateDetailValue"> ${fecha} </div> <br />
 					</div>
 					<div class="detailElement">
 						<span class="appointmentDetailElement"> Veh&iacute;culo: </span> <br />
@@ -30,23 +31,6 @@
 	<body>
 		<div class="header">
 			<img src="./img/audio0.jpg" class="header" />
-		</div>
-		<div class="appointmentDiv" id="appointment1">
-			<a href="#" data-id="1" class="moreLink">&nbsp;>&nbsp;</a>
-			To be attended on: December 7h, 2011&nbsp;
-			<div class="attendLink">
-				<a href="#" data-id="1" class="attendLink">Atender</a>
-			</div>
-			<div class="appointmentDetailDiv">
-				<div class="detailElement">
-					<span class="appointmentDetailElement"> Hora: </span> <br />
-					<span class="appointmentDetailValue"> 17:43.25</span> <br />
-				</div>
-				<div class="detailElement">
-					<span class="appointmentDetailElement"> Veh&iacute;culo: </span> <br />
-					<img src="./img/audio0.jpg" class="appointmentDetailValue" />
-				</div>
-			</div>
 		</div>
 		<!-- Here goes the real development -->
 		<div id="bodyContent"></div>

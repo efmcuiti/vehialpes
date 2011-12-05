@@ -36,6 +36,8 @@ public class Vehiculo {
 	private String resource_uri;
 	/** Manual, automatic, etc.*/
 	private String tipo_caja;
+	/** How much has been used this car.*/
+	private int kilometraje;
 	/**
 	 * @return the cliente
 	 */
@@ -167,5 +169,17 @@ public class Vehiculo {
 	 */
 	public void setTipo_caja(String tipo_caja) {
 		this.tipo_caja = tipo_caja;
+	}
+	/**
+	 * @return the kilometraje
+	 */
+	public int getKilometraje() {
+		return kilometraje;
+	}
+	/**
+	 * @param kilometraje the kilometraje to set
+	 */
+	public void setKilometraje(int kilometraje) {
+		this.kilometraje = kilometraje;
 	}
 }

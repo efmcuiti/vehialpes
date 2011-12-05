@@ -28,7 +28,7 @@ public class Taller {
 	private String resource_uri;
 	/** Localization number.*/
 	private long telefono;
-	/** Homepage of the workshop if any.*/
+	/** Home page of the workshop if any.*/
 	private String website;
 	/**
 	 * @return the direccion

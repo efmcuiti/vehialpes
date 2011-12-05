@@ -15,8 +15,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.tha.rest.util.Util;
+import org.vehialpes.model.AllObjectsEntity;
 import org.vehialpes.model.Cita;
-import org.vehialpes.model.MainAppointmentObject;
+import org.vehialpes.model.Vehiculo;
 
 import com.google.gson.Gson;
 
@@ -43,9 +44,29 @@ public class WrapperResource {
 		String raw = Util.performJSONGETCall(url);
 
 		Gson gSon = new Gson();
-		MainAppointmentObject parsed = gSon.fromJson(raw, MainAppointmentObject.class);
+		@SuppressWarnings("unchecked")
+		AllObjectsEntity<Cita> parsed = gSon.fromJson(raw, AllObjectsEntity.class);
 		answer = parsed.getObjects();
 
+		return answer;
+	}
+	
+	/**
+	 * Requests an external REST service for vehicles.
+	 * @return JSON Representation of a Vehicle.
+	 */
+	@GET
+	@Path("/vehicles/{idVehicle}")
+	@Produces("application/json")
+	public Vehiculo getVehicleById(@PathParam("idVehicle") int idVehicle) {
+		Vehiculo answer = new Vehiculo();
+		
+		String url = Util.BASE_URL + "vehiculo/" + idVehicle + "/";
+		String raw = Util.performJSONGETCall(url);
+		
+		Gson gSon = new Gson();
+		answer = gSon.fromJson(raw, Vehiculo.class);
+		
 		return answer;
 	}
 }
